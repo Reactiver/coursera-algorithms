@@ -3,7 +3,9 @@ public class QuickUnion {
     private final int[] id;
     private final int[] sz;
 
+    private final int size;
     public QuickUnion(int N){
+        size = N;
         id = new int[N];
         sz = new int[N];
 
@@ -42,5 +44,9 @@ public class QuickUnion {
             sz[i] += sz[j];
         }
 
+    }
+
+    public boolean isFullyConnected() {
+        return sz[0] == size;
     }
 }

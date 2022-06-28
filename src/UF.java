@@ -16,6 +16,8 @@ public class UF  {
             } else {
                 StdOut.println("Already connected");
             }
+
+            StdOut.println("Fully connected:" + uf.isFullyConnected());
         }
     }
 }

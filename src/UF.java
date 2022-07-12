@@ -17,7 +17,7 @@ public class UF  {
                 StdOut.println("Already connected");
             }
 
-            StdOut.println("Fully connected:" + uf.isFullyConnected());
+            StdOut.println("Largest sibling: " + uf.find(p));
         }
     }
 }

@@ -2,16 +2,19 @@
 public class QuickUnion {
     private final int[] id;
     private final int[] sz;
+    private final int[] largest;
 
     private final int size;
     public QuickUnion(int N){
         size = N;
         id = new int[N];
         sz = new int[N];
+        largest = new int[N];
 
         for (int i = 0; i < N; i++) {
             id[i] = i;
             sz[i] = 1;
+            largest[i] = i;
         }
     }
 
@@ -36,14 +39,21 @@ public class QuickUnion {
             return;
         }
 
+        int largestNumber = Math.max(p, q);
+
         if (sz[i] < sz[j]) {
             id[i] = j;
             sz[j] += sz[i];
+            largest[j] = Math.max(largestNumber, largest[j]);
         } else {
             id[j] = i;
             sz[i] += sz[j];
+            largest[i] = Math.max(largestNumber, largest[i]);;
         }
+    }
 
+    public int find(int i) {
+        return largest[root(i)];
     }
 
     public boolean isFullyConnected() {
